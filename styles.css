@@ -1,0 +1,35 @@
+.sidebar-wrap {
+  background:#ebebeb;
+  border-radius:4px;
+  padding:15px 25px;
+}
+.sidebar-wrap a {
+  display: block;
+}
+.category-name {
+      color: #337ab7;
+}
+.category-name:hover {
+  cursor:pointer;
+}
+.category-results-wrap {
+  padding:10px 25px;
+  border:1px solid #ebebeb;
+}
+.result {
+  padding-top:15px;
+  padding-bottom:15px;
+  border-bottom:1px solid #ebebeb;
+}
+.result:nth-child(2) {
+  padding-top: 8px;
+}
+.result:last-child {
+  border-bottom:none;
+}
+.result-description {
+  color:#ccc;
+}
+.btn-launch {
+  float:right;
+}

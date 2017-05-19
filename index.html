@@ -1,0 +1,71 @@
+<div id="app" class="container">
+    <!-- <Modal v-bind:modal="modal" v-bind:item="item"></Modal> -->
+    <Sidebar v-bind:categories="categories"></Sidebar>
+    <Results v-bind:results="results" v-bind:categories="categories"></Results>
+</div>
+
+
+<template id="sidebar-template">
+    <div class="sidebar-wrap col-lg-3 col-md-3">
+        <a href="#" class="category-sidebar"
+            v-for="category in categories"
+            v-bind:data-hash="category.categoryHash"
+            v-on:click.prevent="$parent.filterCats($event)">
+            {{category.categoryName}}
+        </a>
+    </div>
+</template>
+
+<template id="results-template">
+    <div class="results-wrap col-lg-8 col-md-8">
+        <div v-for="category in categories" class="category-results-wrap" >
+            <div class="category-name"
+            v-on:click.prevent="$parent.filterCats($event)"
+            v-bind:data-hash="category.categoryHash">{{category.categoryName}}</div>
+            <div class="result"
+                v-if="(category.categoryHash == result.categoryHash)"
+                v-for="(result,key) in results"
+                v-bind:key="result.id">
+                    <button
+                        class="btn btn-sm btn-success btn-launch"
+                        v-on:click.prevent="$parent.launch($event)"
+                        v-bind:data-id="result.id">Launch</button>
+                    <div class="result-title"><strong>{{result.Title}}</strong>: ID {{key}}</div>
+                    <div class="result-description">{{result.Description}}</div>
+                    <div class="result-completed">{{result.DateCompleted}}</div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="doc-modal-template">
+    <div v-show="modal" class="modal" id="doc-modal-window" style="display:block;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+					<button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                        v-on:click="$parent.modal=false">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+					<h4 class="modal-title">{{item.Title}}</h4>
+					</div>
+					<div class="modal-body">
+                <div class="intrinsic-container">
+                    <iframe allowfullscreen
+                        v-bind:src="item.URL">
+                    </iframe>
+                </div>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</template>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="styles.css" />
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.js"></script>
+<script src="app.js"></script>
