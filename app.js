@@ -32,6 +32,9 @@ var app = new Vue({
       item : {}
   },
   methods : {
+      capitalize : function(str){
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      },
       makeHash : function(str){
           return str.replace(/\s+/g, '-').toLowerCase();
       },
@@ -41,6 +44,9 @@ var app = new Vue({
             .done(function(d){
                 var results = JSON.parse(d);
                 $.each(results,function(i,item){
+                    item.Category = vm.capitalize(item.Category);
+                    item.Title = vm.capitalize(item.Title);
+                    item.Description = vm.capitalize(item.Description);
                     item.categoryHash = '';
                     item.categoryHash = vm.makeHash(item.Category);
                 })

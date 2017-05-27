@@ -30,9 +30,10 @@
                 v-bind:key="result.id">
                     <button
                         class="btn btn-sm btn-info btn-launch"
+                        v-show="!result.DateCompleted"
                         v-on:click.prevent="$parent.launch($event)"
                         v-bind:data-id="result.id">Launch</button>
-                    <div class="result-title"><strong>{{result.Title}}</strong>: ID {{key}}</div>
+                    <div class="result-title"><strong>{{result.Title}}</strong>: <small><i>ID: {{key}}</i></small></div>
                     <div class="result-description">{{result.Description}}</div>
                     <div class="result-completed">{{result.DateCompleted}}</div>
             </div>

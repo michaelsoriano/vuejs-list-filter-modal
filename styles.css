@@ -5,7 +5,7 @@
 .sidebar-wrap {
   border-radius:4px;
   border:1px solid #ebebeb;
-  padding:15px 25px;
+  padding:15px 0px;
 }
 .sidebar-wrap h3 {
   font-size:18px;
@@ -13,12 +13,19 @@
   margin-top:0;
   border-bottom:1px solid #ebebeb;
   padding-bottom:10px;
+  padding-left:20px;
+  padding-right:20px;
 }
 .sidebar-wrap a {
   display: block;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom:2px;
+  /*text-transform: capitalize;*/
 }
 .category-name {
-      color: #337ab7;
+  color: #337ab7;
+  /*text-transform: capitalize;*/
 }
 .category-name:hover {
   cursor:pointer;
@@ -52,8 +59,12 @@
 .result:last-child {
   border-bottom:none;
 }
+.result-title {
+  margin-bottom:3px;
+}
 .result-description {
-  color:#ccc;
+  color:#a7a7a7;
+  margin-bottom:5px;
 }
 .btn-launch {
   float:right;
