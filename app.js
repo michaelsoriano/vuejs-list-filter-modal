@@ -37,7 +37,7 @@ var app = new Vue({
       },
       getItems : function(){
         var vm = this;
-        return $.get('data.txt')
+        return $.get('data/data.txt')
             .done(function(d){
                 var results = JSON.parse(d);
                 $.each(results,function(i,item){

@@ -1,5 +1,5 @@
 <div id="app" class="container">
-    <!-- <Modal v-bind:modal="modal" v-bind:item="item"></Modal> -->
+    <Modal v-bind:modal="modal" v-bind:item="item"></Modal>
     <Sidebar v-bind:categories="categories"></Sidebar>
     <Results v-bind:results="results" v-bind:categories="categories"></Results>
 </div>
@@ -7,6 +7,7 @@
 
 <template id="sidebar-template">
     <div class="sidebar-wrap col-lg-3 col-md-3">
+      <h3>Categories</h3>
         <a href="#" class="category-sidebar"
             v-for="category in categories"
             v-bind:data-hash="category.categoryHash"
@@ -18,6 +19,7 @@
 
 <template id="results-template">
     <div class="results-wrap col-lg-8 col-md-8">
+        <h3>Results:</h3>
         <div v-for="category in categories" class="category-results-wrap" >
             <div class="category-name"
             v-on:click.prevent="$parent.filterCats($event)"
@@ -27,7 +29,7 @@
                 v-for="(result,key) in results"
                 v-bind:key="result.id">
                     <button
-                        class="btn btn-sm btn-success btn-launch"
+                        class="btn btn-sm btn-info btn-launch"
                         v-on:click.prevent="$parent.launch($event)"
                         v-bind:data-id="result.id">Launch</button>
                     <div class="result-title"><strong>{{result.Title}}</strong>: ID {{key}}</div>
@@ -53,12 +55,13 @@
 					<h4 class="modal-title">{{item.Title}}</h4>
 					</div>
 					<div class="modal-body">
-                <div class="intrinsic-container">
-                    <iframe allowfullscreen
-                        v-bind:src="item.URL">
-                    </iframe>
-                </div>
+                <iframe allowfullscreen
+                    v-bind:src="item.URL">
+                </iframe>
 					</div>
+          <div class="modal-footer">
+            <button class="btn btn-success">Complete</button>
+          </div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
